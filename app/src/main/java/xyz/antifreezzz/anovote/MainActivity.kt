@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     fun toastForTest(view: View){
         val makeToast = Toast.makeText(this, "TestToast", Toast.LENGTH_LONG)
+
         makeToast.show()
     }
 
