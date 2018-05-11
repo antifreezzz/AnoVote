@@ -12,6 +12,7 @@ import java.security.KeyPairGenerator
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.R.array
+import android.content.Intent
 import android.util.Log
 
 
@@ -30,7 +31,14 @@ class MainActivity : AppCompatActivity() {
         keysStatus = findViewById(R.id.keysStatus)
         createKeys.setOnClickListener(onButtonClickListener)
         voteList = findViewById(R.id.voteList)
-        voteList.setOnItemClickListener(onItemClickListener)
+//        voteList.setOnClickListener(onItemClickListener)
+        val voteAcIntent = Intent(this, VoteActivity::class.java)
+        voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
+            startActivity(voteAcIntent)
+/*            Toast.makeText(applicationContext, ("itemClick: position = " +
+                    position + ", id = " + id + ", " + parent.adapter.getItem(position)),
+                    Toast.LENGTH_SHORT).show()*/
+        }
 
 //        val voteList: MutableList<String> = mutableListOf("Text1", "Text2", "Text2")
 
@@ -63,9 +71,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private val onItemClickListener = View.OnClickListener {
-        toast("ListClick")
-    }
+ /*   private val onListClickListener = View.OnClickListener {
+        voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
+            Toast.makeText(applicationContext, ("itemClick: position = " +
+                    position + ", id = " + id + ", " + parent.adapter.getItem(position)),
+                    Toast.LENGTH_SHORT).show()
+        }
+    }*/
+
+
 
 
 
@@ -111,10 +125,15 @@ class MainActivity : AppCompatActivity() {
     data class Vote(val id: Int, val name: String)
 
 
+
+
+
 }
 
-private fun ListView.setOnItemClickListener(onItemClickListener: View.OnClickListener) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-}
+
+
+
+
+
 
 
