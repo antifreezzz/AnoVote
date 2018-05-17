@@ -100,6 +100,10 @@ class MainActivity : AppCompatActivity() {
         return keysStatus.setText("Ключи созданы, но не подписаны")
     }
 
+    fun voteChange(voteID: Int): Int {
+        return 0
+    }
+
     data class Vote(val id: Int, val name: String)
 
 
