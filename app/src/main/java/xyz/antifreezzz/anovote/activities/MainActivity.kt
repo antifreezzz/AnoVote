@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
         createKeys.setOnClickListener(onButtonClickListener)
         voteList = findViewById(R.id.voteList)
         val voteAcIntent = Intent(this, VoteActivity::class.java)
-/*        voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-            startActivity(voteAcIntent)
-
-        }*/
 
         voteList.onItemClickListener = OnItemClickListener { adapter: AdapterView<*>, view1: View, i: Int, l: Long ->
             adapter.setSelection(i)
@@ -44,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             )
             startActivity(voteAcIntent)
         }
-
 
 
         val voteList = listOf(
@@ -64,12 +59,7 @@ class MainActivity : AppCompatActivity() {
         vote.adapter = adapter
 
 
-
-
-
     }
-
-
 
 
     private val onButtonClickListener = View.OnClickListener {
@@ -79,17 +69,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun toast(text: String) {
+    private fun toast(text: String) {
         val makeToast = Toast.makeText(this, text, Toast.LENGTH_LONG)
         makeToast.show()
     }
 
 
     // Генерация пары ключей
-    fun keysGenerate(): KeyPair? {
+    private fun keysGenerate(): KeyPair? {
         lateinit var keyPair: KeyPair
         //       val keyPair = generateKeys()
-
 
 
         try {
@@ -114,14 +103,8 @@ class MainActivity : AppCompatActivity() {
         return keysStatus.setText("Ключи созданы, но не подписаны")
     }
 
-    fun voteChange(voteID: Int): Int {
-        return 0
-    }
 
     data class Vote(val name: String)
-
-
-
 
 
 }

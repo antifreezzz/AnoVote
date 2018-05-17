@@ -8,8 +8,6 @@ import xyz.antifreezzz.anovote.R
 
 class VoteActivity : AppCompatActivity() {
     private lateinit var position: TextView
-    private var default: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
