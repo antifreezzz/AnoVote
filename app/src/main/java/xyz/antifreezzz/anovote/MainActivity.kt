@@ -31,16 +31,12 @@ class MainActivity : AppCompatActivity() {
         keysStatus = findViewById(R.id.keysStatus)
         createKeys.setOnClickListener(onButtonClickListener)
         voteList = findViewById(R.id.voteList)
-//        voteList.setOnClickListener(onItemClickListener)
         val voteAcIntent = Intent(this, VoteActivity::class.java)
         voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
             startActivity(voteAcIntent)
-/*            Toast.makeText(applicationContext, ("itemClick: position = " +
-                    position + ", id = " + id + ", " + parent.adapter.getItem(position)),
-                    Toast.LENGTH_SHORT).show()*/
+
         }
 
-//        val voteList: MutableList<String> = mutableListOf("Text1", "Text2", "Text2")
 
         val voteList = listOf(
                 Vote(1, "FirstVote"),
@@ -71,17 +67,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
- /*   private val onListClickListener = View.OnClickListener {
-        voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-            Toast.makeText(applicationContext, ("itemClick: position = " +
-                    position + ", id = " + id + ", " + parent.adapter.getItem(position)),
-                    Toast.LENGTH_SHORT).show()
-        }
-    }*/
-
-
-
-
 
     fun toast(text: String) {
         val makeToast = Toast.makeText(this, text, Toast.LENGTH_LONG)
@@ -90,31 +75,26 @@ class MainActivity : AppCompatActivity() {
 
 
     // Генерация пары ключей
-    fun keysGenerate() {
-        val keyPair = generateKeys()
-        val publicKey = keyPair?.public?.encoded
-        val privateKey = keyPair?.private?.encoded
+    fun keysGenerate(): KeyPair? {
+        lateinit var keyPair: KeyPair
+        //       val keyPair = generateKeys()
+        val publicKey = keyPair.public?.encoded
+        val privateKey = keyPair.private?.encoded
 
 
-
-
-        keysStatus()
-//        TODO("Код генерации пары ключей и регистрация у авторизованного центра")
-
-    }
-
-    fun generateKeys(): KeyPair? {
-        var keyPair: KeyPair? = null
         try {
             // get instance of rsa cipher
             val keyGen = KeyPairGenerator.getInstance("RSA")
             keyGen.initialize(1024)            // initialize key generator
             keyPair = keyGen.generateKeyPair() // generate pair of keys
         } catch (e: GeneralSecurityException) {
-            System.out.println(e)
+            println(e)
         }
-
+        keysStatus()
         return keyPair
+
+//        TODO("Код генерации пары ключей и регистрация у авторизованного центра")
+
     }
 
     //Проверка статуса пары ключей (Создана, но не подписана и Создана и подписана
