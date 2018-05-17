@@ -10,7 +10,9 @@ import java.security.KeyPair
 import java.security.KeyPairGenerator
 import android.widget.AdapterView.OnItemClickListener
 import android.content.Intent
+import android.view.WindowId
 import xyz.antifreezzz.anovote.R
+import java.text.FieldPosition
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,16 +31,26 @@ class MainActivity : AppCompatActivity() {
         createKeys.setOnClickListener(onButtonClickListener)
         voteList = findViewById(R.id.voteList)
         val voteAcIntent = Intent(this, VoteActivity::class.java)
-        voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
+/*        voteList.onItemClickListener = OnItemClickListener { parent, view, position, id ->
             startActivity(voteAcIntent)
 
+        }*/
+
+        voteList.onItemClickListener = OnItemClickListener { adapter: AdapterView<*>, view1: View, i: Int, l: Long ->
+            adapter.setSelection(i)
+            voteAcIntent.putExtra(
+                    "position",
+                    adapter.getItemIdAtPosition(i).toString()
+            )
+            startActivity(voteAcIntent)
         }
 
 
+
         val voteList = listOf(
-                Vote(1, "FirstVote"),
-                Vote(2, "SecondVote"),
-                Vote(3, "Third Vote")
+                Vote("FirstVote"),
+                Vote("SecondVote"),
+                Vote("Third Vote")
         )
 
         // находим список
@@ -56,6 +68,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 
 
     private val onButtonClickListener = View.OnClickListener {
@@ -104,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         return 0
     }
 
-    data class Vote(val id: Int, val name: String)
+    data class Vote(val name: String)
 
 
 
