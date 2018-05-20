@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     private fun toast(text: String) {
         val makeToast = Toast.makeText(this, text, Toast.LENGTH_LONG)
         makeToast.show()
