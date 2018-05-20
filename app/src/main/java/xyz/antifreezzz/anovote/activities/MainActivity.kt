@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemClickListener
 import android.content.Intent
 import android.view.WindowId
 import xyz.antifreezzz.anovote.R
+import xyz.antifreezzz.anovote.Vote
 import java.text.FieldPosition
 
 
@@ -101,9 +102,6 @@ class MainActivity : AppCompatActivity() {
     fun keysStatus() {
         return keysStatus.setText("Ключи созданы, но не подписаны")
     }
-
-
-    data class Vote(val name: String)
 
 
 }
