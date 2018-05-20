@@ -22,13 +22,6 @@
         <TextView
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:id="@+id/id"
-            android:layout_alignParentTop="true"
-            android:textSize="30sp" />
-
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
             android:id="@+id/voteText"
             android:layout_alignParentTop="true"
             android:textSize="30sp" />
