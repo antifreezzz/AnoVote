@@ -17,7 +17,7 @@ class VoteDataAdapter(var voteList: List<VotePos>) : RecyclerView.Adapter<VoteDa
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_vote, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return ViewHolder(v)
     }
 
@@ -26,7 +26,7 @@ class VoteDataAdapter(var voteList: List<VotePos>) : RecyclerView.Adapter<VoteDa
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val voteText = itemView.findViewById<TextView>(R.id.voteText)!!
+        val voteText = itemView.findViewById<TextView>(R.id.txtName)!!
 
     }
 
