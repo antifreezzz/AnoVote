@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import xyz.antifreezzz.anovote.R
 import xyz.antifreezzz.anovote.VoteDataAdapter
+import xyz.antifreezzz.anovote.VotePos
 
 class VoteActivity : AppCompatActivity() {
     private lateinit var position: TextView
@@ -18,7 +19,6 @@ class VoteActivity : AppCompatActivity() {
         position = findViewById(R.id.textView)
         votingView = findViewById(R.id.VotingView)
 
-        data class VotePos(val voteListPos: String)
 
         val layoutManager = LinearLayoutManager(applicationContext)
         votingView.layoutManager = layoutManager
