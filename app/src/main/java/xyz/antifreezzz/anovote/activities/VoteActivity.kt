@@ -4,11 +4,17 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import xyz.antifreezzz.anovote.R
 import xyz.antifreezzz.anovote.VoteDataAdapter
 import xyz.antifreezzz.anovote.VotePos
+import xyz.antifreezzz.anovote.VoteItemClickListener
+
+
+
+
 
 class VoteActivity : AppCompatActivity() {
     private lateinit var position: TextView
@@ -31,6 +37,19 @@ class VoteActivity : AppCompatActivity() {
         var adapter = VoteDataAdapter(voteList)
 
         rv.adapter = adapter
+
+
+        rv.addOnItemTouchListener(
+                VoteItemClickListener(this, rv, object : VoteItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        println("OnItemClick")
+                    }
+
+                    override fun onLongItemClick(view: View?, position: Int) {
+                        println("LongClick")
+                    }
+                })
+        )
 
     }
 
