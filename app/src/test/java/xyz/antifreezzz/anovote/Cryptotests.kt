@@ -5,9 +5,9 @@ import org.junit.Test
 
 class CryptoTests {
     private var textForCrypt = "Text"
-    val keyPair = Cryptography().keyGenerate()
-    val privateKey = keyPair!!.private
-    val publicKey = keyPair!!.public
+    private val keyPair = Cryptography().keyGenerate()
+    private val privateKey = keyPair!!.private
+    private val publicKey = keyPair!!.public
 
     @Test
     fun keysGenerateTest() {
@@ -21,6 +21,7 @@ class CryptoTests {
 
         val decodedData = Cryptography().decoder(encodedData, publicKey)
         Assert.assertEquals(textForCrypt, decodedData)
+
     }
 
 }

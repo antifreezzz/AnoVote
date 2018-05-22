@@ -2,25 +2,21 @@ package xyz.antifreezzz.anovote
 
 import android.util.Base64
 import android.util.Log
-import java.security.*
+import java.security.KeyPair
+import java.security.KeyPairGenerator
+import java.security.PrivateKey
+import java.security.PublicKey
 import javax.crypto.Cipher
 
 
-class Cryptography() {
-    val testText = "А у нас сегодня кошка родила вчера котят"
-    lateinit var publicKey: PublicKey
-    lateinit var privateKey: PrivateKey
-    var encodedBytes: ByteArray? = null
-    var decodedBytes: ByteArray? = null
+class Cryptography {
 
-    fun keyGenerate(): KeyPair?{
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
+    private lateinit var publicKey: PublicKey
+    private lateinit var privateKey: PrivateKey
+    private var encodedBytes: ByteArray? = null
+    private var decodedBytes: ByteArray? = null
 
-        // Original text
-
-//        val originalTextView = findViewById(R.id.textViewOriginal) as TextView
-//        originalTextView.text = "[ORIGINAL]:\n$testText\n"
+    fun keyGenerate(): KeyPair? {
 
         // Generate key pair for 1024-bit RSA encryption and decryption
 
@@ -39,25 +35,21 @@ class Cryptography() {
 
     fun encoder(data: String, privateKey: PrivateKey): ByteArray? {
         // Encode the original data with RSA private key
-        var encodedText = data
 
         try {
             val c = Cipher.getInstance("RSA")
             c.init(Cipher.ENCRYPT_MODE, privateKey)
             encodedBytes = c.doFinal(data.toByteArray())
 
-            Base64.encodeToString(encodedBytes, Base64.DEFAULT)
 
+
+            Base64.encodeToString(encodedBytes, Base64.DEFAULT)
         } catch (e: Exception) {
             Log.e("Crypto", "RSA encryption error")
         }
 
         return encodedBytes
     }
-
-//        val encodedTextView = findViewById(R.id.textViewEncoded) as TextView
-/*        encodedTextView.text = "[ENCODED]:\n" +
-                Base64.encodeToString(encodedBytes, Base64.DEFAULT) + "\n"*/
 
     // Decode the encoded data with RSA public key
 
@@ -72,8 +64,6 @@ class Cryptography() {
         }
         return String(decodedBytes!!)
 
-//        val decodedTextView = findViewById(R.id.textViewDecoded) as TextView
-//        decodedTextView.text = "[DECODED]:\n" + String(decodedBytes!!) + "\n"
     }
 
 }
