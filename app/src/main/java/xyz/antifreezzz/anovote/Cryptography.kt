@@ -4,9 +4,7 @@ import android.widget.TextView
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
-import java.security.Key
-import java.security.KeyPairGenerator
-import java.security.SecureRandom
+import java.security.*
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.spec.SecretKeySpec
@@ -14,12 +12,12 @@ import javax.crypto.spec.SecretKeySpec
 
 class Cryptography() {
     val testText = "А у нас сегодня кошка родила вчера котят"
-    var publicKey: Key? = null
-    var privateKey: Key? = null
+    lateinit var publicKey: PublicKey
+    lateinit var privateKey: PrivateKey
     var encodedBytes: ByteArray? = null
     var decodedBytes: ByteArray? = null
 
-    fun keyGenerate() {
+    fun keyGenerate(): KeyPair?{
 //        super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
 
@@ -40,6 +38,7 @@ class Cryptography() {
         } catch (e: Exception) {
             Log.e("Crypto", "RSA key pair error")
         }
+        return KeyPair(publicKey, privateKey)
     }
 
     fun encoder() {
