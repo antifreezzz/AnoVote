@@ -1,13 +1,9 @@
 package xyz.antifreezzz.anovote
 
-import android.widget.TextView
-import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import java.security.*
 import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.spec.SecretKeySpec
 
 
 class Cryptography() {
@@ -41,16 +37,22 @@ class Cryptography() {
         return KeyPair(publicKey, privateKey)
     }
 
-    fun encoder() {
+    fun encoder(data: String, privateKey: PrivateKey): ByteArray? {
         // Encode the original data with RSA private key
+        var encodedText = data
 
         try {
             val c = Cipher.getInstance("RSA")
             c.init(Cipher.ENCRYPT_MODE, privateKey)
-            encodedBytes = c.doFinal(testText.toByteArray())
+            encodedBytes = c.doFinal(data.toByteArray())
+
+            Base64.encodeToString(encodedBytes, Base64.DEFAULT)
+
         } catch (e: Exception) {
             Log.e("Crypto", "RSA encryption error")
         }
+
+        return encodedBytes
     }
 
 //        val encodedTextView = findViewById(R.id.textViewEncoded) as TextView
@@ -59,15 +61,16 @@ class Cryptography() {
 
     // Decode the encoded data with RSA public key
 
-    fun decoder() {
+    fun decoder(encodedBytes: ByteArray?, publicKey: PublicKey): String {
 
         try {
             val c = Cipher.getInstance("RSA")
             c.init(Cipher.DECRYPT_MODE, publicKey)
-            decodedBytes = c.doFinal(encodedBytes!!)
+            decodedBytes = c.doFinal(encodedBytes)
         } catch (e: Exception) {
             Log.e("Crypto", "RSA decryption error")
         }
+        return String(decodedBytes!!)
 
 //        val decodedTextView = findViewById(R.id.textViewDecoded) as TextView
 //        decodedTextView.text = "[DECODED]:\n" + String(decodedBytes!!) + "\n"

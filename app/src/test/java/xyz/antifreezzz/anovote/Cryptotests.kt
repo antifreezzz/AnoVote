@@ -1,15 +1,26 @@
 package xyz.antifreezzz.anovote
 
+import org.junit.Assert
 import org.junit.Test
-import java.security.KeyPair
-import java.security.PrivateKey
-import java.security.PublicKey
 
 class CryptoTests {
+    private var textForCrypt = "Text"
+    val keyPair = Cryptography().keyGenerate()
+    val privateKey = keyPair!!.private
+    val publicKey = keyPair!!.public
+
     @Test
     fun keysGenerateTest() {
-        val keyPair = Cryptography().keyGenerate()
-
-        println(keyPair!!.private.toString() + " " + keyPair.public.toString())
+        Cryptography().keyGenerate()
     }
+    @Test
+    fun encryptDecrypt(){
+
+
+        val encodedData = Cryptography().encoder(textForCrypt, privateKey)
+
+        val decodedData = Cryptography().decoder(encodedData, publicKey)
+        Assert.assertEquals(textForCrypt, decodedData)
+    }
+
 }
