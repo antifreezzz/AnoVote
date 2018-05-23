@@ -7,3 +7,5 @@ android:
     - android-25
 env:
 - GRADLE_OPTS="-Xmx512m -XX:MaxPermSize=512m"
+before_install:
+ - chmod +x gradlew
