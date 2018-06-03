@@ -71,7 +71,6 @@ class VoteActivity : AppCompatActivity() {
     }
 
     private val onCancelButtonClickListener = View.OnClickListener {
-        //todo return to Main Activity without saving vote
         val makeToast = Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT)
         makeToast.show()
         startActivity(mainActivityIntent)
