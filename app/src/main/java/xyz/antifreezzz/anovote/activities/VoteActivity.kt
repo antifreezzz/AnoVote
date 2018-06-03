@@ -72,13 +72,13 @@ class VoteActivity : AppCompatActivity() {
 
     private val onCancelButtonClickListener = View.OnClickListener {
         //todo return to Main Activity without saving vote
-        val makeToast = Toast.makeText(this, "Cancel", Toast.LENGTH_LONG)
+        val makeToast = Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT)
         makeToast.show()
         startActivity(mainActivityIntent)
     }
     private val onConfirmButtonClickListener = View.OnClickListener {
         //todo confirm vote and send to server
-        val makeToast = Toast.makeText(this, "Confirm", Toast.LENGTH_LONG)
+        val makeToast = Toast.makeText(this, "Confirm", Toast.LENGTH_SHORT)
         makeToast.show()
 
     }
