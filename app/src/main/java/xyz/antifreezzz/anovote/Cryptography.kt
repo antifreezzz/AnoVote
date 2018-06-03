@@ -32,7 +32,6 @@ class Cryptography {
         }
         return KeyPair(publicKey, privateKey)
     }
-
     fun encoder(data: String, privateKey: PrivateKey): ByteArray? {
         // Encode the original data with RSA private key
 
