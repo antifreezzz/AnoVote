@@ -1,5 +1,6 @@
 package xyz.antifreezzz.anovote.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -23,6 +24,7 @@ class VoteActivity : AppCompatActivity() {
     lateinit var votingView: RecyclerView
     lateinit var cancelBtn: Button
     lateinit var confirmBtn: Button
+    lateinit var mainActivityIntent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,8 @@ class VoteActivity : AppCompatActivity() {
 
         confirmBtn.setOnClickListener(onConfirmButtonClickListener)
         cancelBtn.setOnClickListener(onCancelButtonClickListener)
+
+        mainActivityIntent = Intent(this, MainActivity::class.java)
 
 
 
@@ -70,7 +74,7 @@ class VoteActivity : AppCompatActivity() {
         //todo return to Main Activity without saving vote
         val makeToast = Toast.makeText(this, "Cancel", Toast.LENGTH_LONG)
         makeToast.show()
-
+        startActivity(mainActivityIntent)
     }
     private val onConfirmButtonClickListener = View.OnClickListener {
         //todo confirm vote and send to server
