@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import xyz.antifreezzz.anovote.R
 import xyz.antifreezzz.anovote.VoteDataAdapter
 import xyz.antifreezzz.anovote.VotePos
@@ -19,10 +21,20 @@ import xyz.antifreezzz.anovote.VoteItemClickListener
 class VoteActivity : AppCompatActivity() {
     private lateinit var position: TextView
     lateinit var votingView: RecyclerView
+    lateinit var cancelBtn: Button
+    lateinit var confirmBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vote)
+
+        confirmBtn = findViewById(R.id.confirmBtn)
+        cancelBtn = findViewById(R.id.cancelBtn)
+
+        confirmBtn.setOnClickListener(onConfirmButtonClickListener)
+        cancelBtn.setOnClickListener(onCancelButtonClickListener)
+
+
 
         val rv = findViewById<RecyclerView>(R.id.recyclerView1)
         rv.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -34,7 +46,7 @@ class VoteActivity : AppCompatActivity() {
                 VotePos("Вариант 4")
         )
 
-        var adapter = VoteDataAdapter(voteList)
+        val adapter = VoteDataAdapter(voteList)
 
         rv.adapter = adapter
 
@@ -50,6 +62,20 @@ class VoteActivity : AppCompatActivity() {
                     }
                 })
         )
+
+
+    }
+
+    private val onCancelButtonClickListener = View.OnClickListener {
+        //todo return to Main Activity without saving vote
+        val makeToast = Toast.makeText(this, "Cancel", Toast.LENGTH_LONG)
+        makeToast.show()
+
+    }
+    private val onConfirmButtonClickListener = View.OnClickListener {
+        //todo confirm vote and send to server
+        val makeToast = Toast.makeText(this, "Confirm", Toast.LENGTH_LONG)
+        makeToast.show()
 
     }
 
