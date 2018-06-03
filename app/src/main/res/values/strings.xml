@@ -3,6 +3,6 @@
     <string name="createKeysBtn">Создать ключи</string>
     <string name="keysStatusFld">KeysStatusFld</string>
     <string name="name">Name</string>
-    <string name="confirmBtn">Cancel</string>
-    <string name="cancelBtn">cancelBtn</string>
+    <string name="confirmBtn">Confirm</string>
+    <string name="cancelBtn">Cancel</string>
 </resources>
