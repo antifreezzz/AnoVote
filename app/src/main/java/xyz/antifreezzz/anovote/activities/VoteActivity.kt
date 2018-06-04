@@ -2,7 +2,6 @@ package xyz.antifreezzz.anovote.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -14,11 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import xyz.antifreezzz.anovote.R
 import xyz.antifreezzz.anovote.VoteDataAdapter
-import xyz.antifreezzz.anovote.VotePos
 import xyz.antifreezzz.anovote.VoteItemClickListener
-
-
-
+import xyz.antifreezzz.anovote.VotePos
 
 
 class VoteActivity : AppCompatActivity() {
@@ -41,6 +37,7 @@ class VoteActivity : AppCompatActivity() {
 
         confirmBtn = findViewById(R.id.confirmBtn)
         cancelBtn = findViewById(R.id.cancelBtn)
+
 
         confirmBtn.setOnClickListener(onConfirmButtonClickListener)
         cancelBtn.setOnClickListener(onCancelButtonClickListener)
