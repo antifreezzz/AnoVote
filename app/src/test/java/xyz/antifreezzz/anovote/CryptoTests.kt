@@ -11,7 +11,7 @@ class CryptoTests {
 
     @Test
     fun keysGenerateTest() {
-        Cryptography().keyGenerate()
+        Assert.assertNotEquals(keyPair.toString(), null)
     }
     @Test
     fun encryptDecrypt(){
