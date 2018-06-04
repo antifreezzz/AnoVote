@@ -2,9 +2,11 @@ package xyz.antifreezzz.anovote.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -26,9 +28,16 @@ class VoteActivity : AppCompatActivity() {
     lateinit var confirmBtn: Button
     lateinit var mainActivityIntent: Intent
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vote)
+
+        val actionBar = supportActionBar
+        actionBar!!.setHomeButtonEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
+
 
         confirmBtn = findViewById(R.id.confirmBtn)
         cancelBtn = findViewById(R.id.cancelBtn)
@@ -80,6 +89,16 @@ class VoteActivity : AppCompatActivity() {
         val makeToast = Toast.makeText(this, "Confirm", Toast.LENGTH_SHORT)
         makeToast.show()
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
