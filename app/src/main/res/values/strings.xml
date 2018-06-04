@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AnoVote</string>
     <string name="createKeysBtn">Создать ключи</string>
-    <string name="keysstatusfld">KeysStatusFld</string>
+    <string name="keysStatusFld">KeysStatusFld</string>
     <string name="name">Name</string>
+    <string name="confirmBtn">Confirm</string>
+    <string name="cancelBtn">Cancel</string>
 </resources>
