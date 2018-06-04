@@ -34,7 +34,7 @@ class VoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_vote)
 
         val actionBar = supportActionBar
-        actionBar!!.setHomeButtonEnabled(true)
+        (actionBar ?: throw NullPointerException("Expression 'actionBar' must not be null")).setHomeButtonEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)
 
 
