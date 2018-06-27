@@ -1,0 +1,7 @@
+{
+  "VoteList" : "VoteList",
+  "Data":
+  {
+   "Voting":["Vote1", "Vote2", "Vote3", "Vote4"]
+  }
+}
